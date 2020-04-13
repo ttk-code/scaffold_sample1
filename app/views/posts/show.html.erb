@@ -1,0 +1,21 @@
+<%= @post.user.name %>
+<p>
+  <strong>Image:</strong>
+  <%= image_tag @post.image.url if @post.image? %>
+</p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @post.title %>
+</p>
+
+<p>
+  <strong>Text:</strong>
+  <%= @post.text %>
+</p>
+
+<% if current_user == @post.user %>
+<%= link_to 'Edit', edit_post_path(@post) %> |
+<%= link_to 'Destroy', @post, method: :delete, data: { confirm: 'Are you sure?' } %>
+<% end %>
+
