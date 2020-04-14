@@ -5,4 +5,7 @@ class Post < ApplicationRecord
 	validates :title, presence: true, length: { maximum: 255 }
 	validates :text, presence: true, length: { maximum: 255 }
 
+	has_many :like
+  has_many :likers, through: :like , source: :user
+
 end

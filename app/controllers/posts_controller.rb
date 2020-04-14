@@ -3,6 +3,7 @@ class PostsController < ApplicationController
   before_action :set_post, only: [:show, :edit, :update, :destroy]
 
   def show
+  @posts = current_user.posts.find(params[:id])
 
   end
 
@@ -21,7 +22,7 @@ class PostsController < ApplicationController
     else
       @posts = current_user.posts.order(id: :desc).page(params[:page])
       flash.now[:danger] = 'メッセージの投稿に失敗しました。'
-      render 'toppages/index'
+      render :new
     end
   end
 
