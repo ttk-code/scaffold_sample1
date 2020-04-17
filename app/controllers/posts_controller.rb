@@ -1,9 +1,11 @@
 class PostsController < ApplicationController
   before_action :require_user_logged_in
-  before_action :set_post, only: [:show, :edit, :update, :destroy]
+  before_action :set_post, only: [:show,:edit, :update, :destroy]
 
   def show
-  @posts = current_user.posts.find(params[:id])
+
+  @comments = @post.comments.all
+  @comment = @post.comments.build
 
   end
 

@@ -8,4 +8,5 @@ class Post < ApplicationRecord
 	has_many :like
   has_many :likers, through: :like , source: :user
 
+	has_many :comments
 end

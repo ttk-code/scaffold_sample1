@@ -1,12 +1,5 @@
 Rails.application.routes.draw do
-  get 'likes/create'
-  get 'likes/destroy'
-  get 'relationships/create'
-  get 'relationships/destroy'
-  #get 'sessions/new'
-  #get 'sessions/create'
-  #get 'sessions/destroy'
-  #get 'toppages/index'
+
 
   root "toppages#index"
 
@@ -24,10 +17,14 @@ Rails.application.routes.draw do
     end
 	end
 
-	resources :posts, only: [:show, :new, :edit, :create, :update, :destroy]
+	resources :posts, only: [:show, :new, :edit, :create, :update, :destroy] do
+	  resources :comments, only: [:create]
+	end
 
   resources :relationships, only: [:create, :destroy]
 
   resources :likes, only: [:create, :destroy]
+
+
 end
 

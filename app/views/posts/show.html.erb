@@ -1,3 +1,4 @@
+
 <%= @post.user.name %>
 <p>
   <strong>Image:</strong>
@@ -14,7 +15,7 @@
   <%= @post.text %>
 </p>
 
-<%= render 'likes/like_button',post: @posts %>
+<%= render 'likes/like_button',post: @post %>
 
 
 <% if current_user == @post.user %>
@@ -22,3 +23,36 @@
 <%= link_to 'Destroy', @post, method: :delete, data: { confirm: 'Are you sure?' } %>
 <% end %>
 
+
+
+
+
+<h2>コメント一覧</h2>
+<% @comments.each do |c| %>
+  <li class="media mb-3">
+      <div class="media-body">
+        <div>
+          <%= c.user.name%>
+        </div>
+        <div>
+          <p><%= c.content %></p>
+        </div>
+      </div>
+    </li>
+<% end %>
+
+<%= form_for [@post, @comment] do |f| %>
+  <%= f.text_field :content %>
+  <br>
+  <%= f.submit 'コメントする' %>
+<% end %>
+
+
+
+
+
+
+
+
+
+</div>

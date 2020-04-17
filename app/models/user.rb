@@ -46,10 +46,10 @@ class User < ApplicationRecord
     self.likings.include?(other_post)
   end
 
+  has_many :comments
 
 
 
 end
 
 
-# rails g model Post image title:string text:string user:references
